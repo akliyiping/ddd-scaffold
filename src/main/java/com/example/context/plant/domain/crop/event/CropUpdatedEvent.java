@@ -2,20 +2,18 @@ package com.example.context.plant.domain.crop.event;
 
 import com.example.context.plant.domain.crop.model.Crop;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.Setter;
 
-import java.awt.event.ComponentEvent;
 import java.time.Instant;
 
 @Setter
 @Builder
-public class CropCreatedEvent {
+public class CropUpdatedEvent {
   private Instant createdDate;
   private Crop crop;
 
-  public static CropCreatedEvent create(Crop crop) {
-    return CropCreatedEvent.builder()
+  public static CropUpdatedEvent create(Crop crop) {
+    return CropUpdatedEvent.builder()
             .crop(crop)
             .createdDate(Instant.now())
             .build();

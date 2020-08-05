@@ -12,7 +12,13 @@ public class CropRepositoryImpl implements CropRepository {
   }
 
   @Override
-  public void save(Crop blankQuiz) {
-
+  public Crop save(Crop crop) {
+    return null;
   }
+
+  @Override
+  public Crop update(Crop crop) {
+    return null;
+  }
+
 }

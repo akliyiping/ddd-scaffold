@@ -5,5 +5,7 @@ import com.example.context.plant.domain.crop.model.Crop;
 public interface CropRepository {
   Crop find(String id);
 
-  void save(Crop blankQuiz);
+  Crop save(Crop crop);
+
+  Crop update(Crop crop);
 }

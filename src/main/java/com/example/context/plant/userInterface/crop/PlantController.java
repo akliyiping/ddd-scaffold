@@ -5,7 +5,7 @@ import com.example.context.plant.domain.crop.command.CreationCropCommand;
 import com.example.context.plant.domain.crop.command.UpdateCropCommand;
 import com.example.context.plant.domain.crop.event.CropCreatedEvent;
 import com.example.context.plant.domain.crop.event.CropUpdatedEvent;
-import com.example.context.plant.infrastructure.repository.MemoryCropQueryRepository;
+import com.example.context.plant.infrastructure.repository.db.DBCropQueryRepository;
 import com.example.context.plant.userInterface.crop.dto.CropDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class PlantController {
     private PlantApplicationService plantApplicationService;
 
     @Autowired
-    private MemoryCropQueryRepository memoryCropQueryRepository;
+    private DBCropQueryRepository dbCropQueryRepository;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -37,6 +37,6 @@ public class PlantController {
     @RequestMapping("/query")
     @ResponseStatus(HttpStatus.OK)
     public List<CropDto> query() {
-        return memoryCropQueryRepository.queryList();
+        return dbCropQueryRepository.findAll();
     }
 }

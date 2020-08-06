@@ -7,11 +7,13 @@ import com.example.context.plant.domain.crop.event.CropUpdatedEvent;
 import com.example.context.plant.domain.crop.model.Crop;
 import com.example.context.plant.domain.crop.repository.CropRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PlantApplicationService {
+    @Qualifier("DBCropRepository")
     @Autowired
     private CropRepository cropRepository;
 

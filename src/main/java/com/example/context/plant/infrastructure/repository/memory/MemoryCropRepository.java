@@ -1,4 +1,4 @@
-package com.example.context.plant.infrastructure.repository;
+package com.example.context.plant.infrastructure.repository.memory;
 
 import com.example.context.plant.domain.crop.model.Crop;
 import com.example.context.plant.domain.crop.repository.CropRepository;

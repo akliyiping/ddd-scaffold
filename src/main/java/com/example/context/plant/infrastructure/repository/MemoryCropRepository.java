@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class CropRepositoryImpl implements CropRepository {
-  final List<Crop> cropList = new ArrayList<>();
+public class MemoryCropRepository implements CropRepository {
+  final static List<Crop> CROP_LIST = new ArrayList<>();
 
   @Override
   public Crop find(String id) {
-	return cropList.stream().filter(crop -> crop.getId().equals(id)).findFirst().orElse(null);
+	return CROP_LIST.stream().filter(crop -> crop.getId().equals(id)).findFirst().orElse(null);
   }
 
   @Override
   public Crop save(Crop crop) {
-    cropList.add(crop);
+    CROP_LIST.add(crop);
     return crop;
   }
 

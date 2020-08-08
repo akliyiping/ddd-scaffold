@@ -1,2 +1,4 @@
-insert into crop(id, name, weight) VALUES ('黄瓜','b','c');
-insert into crop(id, name, weight) VALUES ('西红柿 ','b2','c2');
+insert into crop(id, name, weight)
+VALUES ('1', '黄瓜', '20kg');
+insert into crop(id, name, weight)
+VALUES ('2', '西红柿', '30kg');

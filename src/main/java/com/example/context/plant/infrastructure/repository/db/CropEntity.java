@@ -1,7 +1,5 @@
 package com.example.context.plant.infrastructure.repository.db;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

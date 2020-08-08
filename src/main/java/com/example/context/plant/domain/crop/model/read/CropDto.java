@@ -1,6 +1,5 @@
-package com.example.context.plant.userInterface.crop.dto;
+package com.example.context.plant.domain.crop.model.read;
 
-import com.example.context.plant.domain.crop.model.Weight;
 import lombok.Builder;
 import lombok.Data;
 

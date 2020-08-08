@@ -10,5 +10,5 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 public class Weight {
-  private String value;
+    private String value;
 }

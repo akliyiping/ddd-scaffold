@@ -1,6 +1,5 @@
 package com.example.context.plant.domain.crop.command;
 
-import com.example.context.plant.domain.crop.model.Weight;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +9,6 @@ import lombok.Setter;
 @Setter
 @Builder
 public class CreationCropCommand {
-  private String name;
-  private String weight;
+    private String name;
+    private String weight;
 }

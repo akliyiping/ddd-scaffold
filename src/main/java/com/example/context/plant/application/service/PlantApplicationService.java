@@ -1,4 +1,4 @@
-package com.example.context.plant.application;
+package com.example.context.plant.application.service;
 
 import com.example.context.plant.domain.crop.command.CreationCropCommand;
 import com.example.context.plant.domain.crop.command.UpdateCropCommand;

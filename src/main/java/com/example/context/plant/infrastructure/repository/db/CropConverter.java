@@ -2,8 +2,7 @@ package com.example.context.plant.infrastructure.repository.db;
 
 import com.example.context.plant.domain.crop.model.Crop;
 import com.example.context.plant.domain.crop.model.Weight;
-import com.example.context.plant.userInterface.crop.dto.CropDto;
-import com.example.shared.Entity;
+import com.example.context.plant.domain.crop.model.read.CropDto;
 
 public class CropConverter {
     public static CropDto cropEntityToCropDto(CropEntity cropEntity) {

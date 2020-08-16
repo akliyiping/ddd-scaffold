@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CropReadRepository {
     List<CropDto> findAll();
+
+    CropDto findById(String id);
 }

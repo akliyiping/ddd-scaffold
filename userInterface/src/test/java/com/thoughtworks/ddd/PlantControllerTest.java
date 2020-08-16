@@ -36,7 +36,7 @@ class PlantControllerTest {
     @Transactional
     @Rollback
     void query(@Autowired MockMvc mvc) throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/plant/query")
+        mvc.perform(MockMvcRequestBuilders.get("/plant")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(mvcResult -> {
@@ -49,6 +49,23 @@ class PlantControllerTest {
                     Assertions.assertEquals("2", JsonPath.read(document, "$[1].id"));
                     Assertions.assertEquals("西红柿", JsonPath.read(document, "$[1].name"));
                     Assertions.assertEquals("30kg", JsonPath.read(document, "$[1].weight"));
+                });
+    }
+
+
+    @Test
+    @Transactional
+    @Rollback
+    void queryOne(@Autowired MockMvc mvc) throws Exception {
+        mvc.perform(MockMvcRequestBuilders.get("/plant/1")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andDo(mvcResult -> {
+                    String contentAsString = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+                    Object document = Configuration.defaultConfiguration().jsonProvider().parse(contentAsString);
+                    Assertions.assertEquals("1", JsonPath.read(document, "$.id"));
+                    Assertions.assertEquals("黄瓜", JsonPath.read(document, "$.name"));
+                    Assertions.assertEquals("20kg", JsonPath.read(document, "$.weight"));
                 });
     }
 

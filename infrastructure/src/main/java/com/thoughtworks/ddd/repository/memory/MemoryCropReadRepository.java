@@ -11,6 +11,17 @@ import java.util.stream.Collectors;
 public class MemoryCropReadRepository implements CropReadRepository {
     @Override
     public List<CropDto> findAll() {
-        return MemoryCropRepository.CROP_LIST.stream().map(crop -> CropDto.builder().name(crop.getName()).build()).collect(Collectors.toList());
+        return MemoryCropRepository.CROP_LIST.stream()
+                .map(crop -> CropDto.builder().name(crop.getName()).build())
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public CropDto findById(String id) {
+        return MemoryCropRepository.CROP_LIST.stream()
+                .filter(crop -> id.equals(crop.getId()))
+                .map(crop -> CropDto.builder().name(crop.getName()).build())
+                .findFirst()
+                .orElseGet(null);
     }
 }

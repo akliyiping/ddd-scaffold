@@ -17,4 +17,9 @@ public class DBCropReadRepository implements CropReadRepository {
     public List<CropDto> findAll() {
         return dBCropJpaClient.findAll().stream().map(CropConverter::cropEntityToCropDto).collect(Collectors.toList());
     }
+
+    @Override
+    public CropDto findById(String id) {
+        return dBCropJpaClient.findById(id).map(CropConverter::cropEntityToCropDto).orElseGet(null);
+    }
 }

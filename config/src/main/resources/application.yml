@@ -14,4 +14,6 @@ spring:
         password: sa
         sql-script-encoding: utf-8
         generate-unique-name: true
-
+server:
+    #端口号
+    port: 7777

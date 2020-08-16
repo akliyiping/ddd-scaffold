@@ -35,10 +35,15 @@ public class PlantController {
         return plantApplicationService.updateCrop(updateCropCommand);
     }
 
-    @PostMapping
-    @RequestMapping("/query")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<CropDto> query() {
         return cropReadRepository.findAll();
+    }
+
+    @GetMapping("{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CropDto queryById(@PathVariable String id) {
+        return cropReadRepository.findById(id);
     }
 }

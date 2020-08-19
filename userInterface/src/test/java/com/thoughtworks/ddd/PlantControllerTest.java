@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -40,7 +40,7 @@ class PlantControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(mvcResult -> {
-                    String contentAsString = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+                    String contentAsString = mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8);
                     Object document = Configuration.defaultConfiguration().jsonProvider().parse(contentAsString);
                     Assertions.assertEquals(2, (Integer) JsonPath.read(document, "$.length()"));
                     Assertions.assertEquals("1", JsonPath.read(document, "$[0].id"));
@@ -61,7 +61,7 @@ class PlantControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andDo(mvcResult -> {
-                    String contentAsString = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+                    String contentAsString = mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8);
                     Object document = Configuration.defaultConfiguration().jsonProvider().parse(contentAsString);
                     Assertions.assertEquals("1", JsonPath.read(document, "$.id"));
                     Assertions.assertEquals("黄瓜", JsonPath.read(document, "$.name"));
@@ -84,7 +84,7 @@ class PlantControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andDo(mvcResult -> {
-                    String contentAsString = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+                    String contentAsString = mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8);
                     Object document = Configuration.defaultConfiguration().jsonProvider().parse(contentAsString);
                     Assertions.assertNotNull(JsonPath.read(document, "$.createdDate"));
                     Assertions.assertNotNull(JsonPath.read(document, "$.crop.id"));
@@ -109,7 +109,7 @@ class PlantControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is2xxSuccessful())
                 .andDo(mvcResult -> {
-                    String contentAsString = mvcResult.getResponse().getContentAsString(Charset.defaultCharset());
+                    String contentAsString = mvcResult.getResponse().getContentAsString(StandardCharsets.UTF_8);
                     Object document = Configuration.defaultConfiguration().jsonProvider().parse(contentAsString);
                     Assertions.assertEquals(id, JsonPath.read(document, "$.crop.id"));
                     Assertions.assertEquals(name, JsonPath.read(document, "$.crop.name"));

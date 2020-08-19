@@ -1,10 +1,12 @@
 package com.thoughtworks.ddd.domain.crop.command;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 @Builder
 public class UpdateCropCommand {
     private String id;

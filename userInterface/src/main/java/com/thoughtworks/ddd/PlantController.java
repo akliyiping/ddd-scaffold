@@ -1,10 +1,10 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.crop.command.CreationCropCommand;
-import com.thoughtworks.ddd.domain.crop.command.UpdateCropCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropCreationCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropUpdateCommand;
 import com.thoughtworks.ddd.domain.crop.event.CropCreatedEvent;
 import com.thoughtworks.ddd.domain.crop.event.CropUpdatedEvent;
-import com.thoughtworks.ddd.domain.crop.model.read.CropDto;
+import com.thoughtworks.ddd.domain.crop.read.dto.CropInfoDto;
 import com.thoughtworks.ddd.domain.crop.repository.CropReadRepository;
 import com.thoughtworks.ddd.service.PlantApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,24 +26,24 @@ public class PlantController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CropCreatedEvent create(@RequestBody CreationCropCommand creationCropCommand) {
-        return plantApplicationService.createCrop(creationCropCommand);
+    public CropCreatedEvent create(@RequestBody CropCreationCommand cropCreationCommand) {
+        return plantApplicationService.createCrop(cropCreationCommand);
     }
 
     @PutMapping
-    public CropUpdatedEvent update(@RequestBody UpdateCropCommand updateCropCommand) {
-        return plantApplicationService.updateCrop(updateCropCommand);
+    public CropUpdatedEvent update(@RequestBody CropUpdateCommand cropUpdateCommand) {
+        return plantApplicationService.updateCrop(cropUpdateCommand);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CropDto> query() {
+    public List<CropInfoDto> query() {
         return cropReadRepository.findAll();
     }
 
     @GetMapping("{id}")
     @ResponseStatus(HttpStatus.OK)
-    public CropDto queryById(@PathVariable String id) {
+    public CropInfoDto queryById(@PathVariable String id) {
         return cropReadRepository.findById(id);
     }
 }

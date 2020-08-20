@@ -3,8 +3,8 @@ package com.thoughtworks.ddd;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
-import com.thoughtworks.ddd.domain.crop.command.CreationCropCommand;
-import com.thoughtworks.ddd.domain.crop.command.UpdateCropCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropCreationCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropUpdateCommand;
 import com.thoughtworks.ddd.repository.db.CropEntity;
 import com.thoughtworks.ddd.repository.db.DBCropJpaClient;
 import org.junit.jupiter.api.Assertions;
@@ -76,7 +76,7 @@ class PlantControllerTest {
         ObjectMapper mapper = new ObjectMapper();
         String name = "土豆";
         String weight = "190kg";
-        CreationCropCommand potatoCommand = CreationCropCommand.builder().name(name).weight(weight).build();
+        CropCreationCommand potatoCommand = CropCreationCommand.builder().name(name).weight(weight).build();
         String potatoString = mapper.writeValueAsString(potatoCommand);
         mvc.perform(MockMvcRequestBuilders.post("/plant")
                 .content(potatoString)
@@ -101,8 +101,8 @@ class PlantControllerTest {
         String id = "1";
         String name = "土豆";
         String weight = "190kg";
-        UpdateCropCommand updateCropCommand = UpdateCropCommand.builder().id(id).name(name).weight(weight).build();
-        String potatoString = mapper.writeValueAsString(updateCropCommand);
+        CropUpdateCommand cropUpdateCommand = CropUpdateCommand.builder().id(id).name(name).weight(weight).build();
+        String potatoString = mapper.writeValueAsString(cropUpdateCommand);
         mvc.perform(MockMvcRequestBuilders.put("/plant")
                 .content(potatoString)
                 .contentType(MediaType.APPLICATION_JSON)

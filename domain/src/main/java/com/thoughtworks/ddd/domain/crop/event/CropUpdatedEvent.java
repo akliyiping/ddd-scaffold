@@ -3,12 +3,14 @@ package com.thoughtworks.ddd.domain.crop.event;
 import com.thoughtworks.ddd.domain.crop.model.Crop;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.springframework.context.ApplicationEvent;
 
 import java.time.Instant;
 
 @Getter
 @Setter
+@ToString
 public class CropUpdatedEvent extends ApplicationEvent {
     private Instant createdDate;
     private Crop crop;

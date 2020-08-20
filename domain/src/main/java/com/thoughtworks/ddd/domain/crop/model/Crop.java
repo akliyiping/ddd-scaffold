@@ -1,7 +1,7 @@
 package com.thoughtworks.ddd.domain.crop.model;
 
-import com.thoughtworks.ddd.domain.crop.command.CreationCropCommand;
-import com.thoughtworks.ddd.domain.crop.command.UpdateCropCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropCreationCommand;
+import com.thoughtworks.ddd.domain.crop.command.CropUpdateCommand;
 import com.thoughtworks.ddd.shared.AggregateRoot;
 import lombok.Builder;
 import lombok.Data;
@@ -16,18 +16,18 @@ public class Crop {
     private String name;
     private Weight weight;
 
-    public static Crop create(CreationCropCommand creationCropCommand) {
+    public static Crop create(CropCreationCommand cropCreationCommand) {
         return Crop.builder()
                 .id(UUID.randomUUID().toString())
-                .name(creationCropCommand.getName())
-                .weight(Weight.builder().value(creationCropCommand.getWeight()).build())
+                .name(cropCreationCommand.getName())
+                .weight(Weight.builder().value(cropCreationCommand.getWeight()).build())
                 .build();
     }
 
-    public void merge(UpdateCropCommand updateCropCommand) {
-        this.setName(updateCropCommand.getName());
+    public void merge(CropUpdateCommand cropUpdateCommand) {
+        this.setName(cropUpdateCommand.getName());
         this.setWeight(
-                Weight.builder().value(updateCropCommand.getWeight()).build()
+                Weight.builder().value(cropUpdateCommand.getWeight()).build()
         );
     }
 }

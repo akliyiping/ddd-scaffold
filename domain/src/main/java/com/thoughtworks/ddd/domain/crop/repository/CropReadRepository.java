@@ -1,11 +1,11 @@
 package com.thoughtworks.ddd.domain.crop.repository;
 
-import com.thoughtworks.ddd.domain.crop.model.read.CropDto;
+import com.thoughtworks.ddd.domain.crop.read.dto.CropInfoDto;
 
 import java.util.List;
 
 public interface CropReadRepository {
-    List<CropDto> findAll();
+    List<CropInfoDto> findAll();
 
-    CropDto findById(String id);
+    CropInfoDto findById(String id);
 }

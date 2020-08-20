@@ -1,7 +1,7 @@
 package com.thoughtworks.ddd;
 
-import com.thoughtworks.ddd.domain.crop.command.CropCreationCommand;
-import com.thoughtworks.ddd.domain.crop.command.CropUpdateCommand;
+import com.thoughtworks.ddd.domain.crop.command.CreationCropCommand;
+import com.thoughtworks.ddd.domain.crop.command.UpdateCropCommand;
 import com.thoughtworks.ddd.domain.crop.event.CropCreatedEvent;
 import com.thoughtworks.ddd.domain.crop.event.CropUpdatedEvent;
 import com.thoughtworks.ddd.domain.crop.read.dto.CropInfoDto;
@@ -26,13 +26,13 @@ public class PlantController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CropCreatedEvent create(@RequestBody CropCreationCommand cropCreationCommand) {
-        return plantApplicationService.createCrop(cropCreationCommand);
+    public CropCreatedEvent create(@RequestBody CreationCropCommand creationCropCommand) {
+        return plantApplicationService.createCrop(creationCropCommand);
     }
 
     @PutMapping
-    public CropUpdatedEvent update(@RequestBody CropUpdateCommand cropUpdateCommand) {
-        return plantApplicationService.updateCrop(cropUpdateCommand);
+    public CropUpdatedEvent update(@RequestBody UpdateCropCommand updateCropCommand) {
+        return plantApplicationService.updateCrop(updateCropCommand);
     }
 
     @GetMapping

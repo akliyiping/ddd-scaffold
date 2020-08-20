@@ -1,7 +1,7 @@
 package com.thoughtworks.ddd.service;
 
-import com.thoughtworks.ddd.domain.crop.command.CropCreationCommand;
-import com.thoughtworks.ddd.domain.crop.command.CropUpdateCommand;
+import com.thoughtworks.ddd.domain.crop.command.CreationCropCommand;
+import com.thoughtworks.ddd.domain.crop.command.UpdateCropCommand;
 import com.thoughtworks.ddd.domain.crop.event.CropCreatedEvent;
 import com.thoughtworks.ddd.domain.crop.event.CropUpdatedEvent;
 import com.thoughtworks.ddd.domain.crop.model.Crop;
@@ -20,17 +20,17 @@ public class PlantApplicationService {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    public CropCreatedEvent createCrop(CropCreationCommand cropCreationCommand) {
-        Crop crop = Crop.create(cropCreationCommand);
+    public CropCreatedEvent createCrop(CreationCropCommand creationCropCommand) {
+        Crop crop = Crop.create(creationCropCommand);
         crop = cropRepository.save(crop);
         CropCreatedEvent cropCreatedEvent = CropCreatedEvent.create(crop);
         eventPublisher.publishEvent(cropCreatedEvent);
         return cropCreatedEvent;
     }
 
-    public CropUpdatedEvent updateCrop(CropUpdateCommand cropUpdateCommand) {
-        Crop crop = cropRepository.find(cropUpdateCommand.getId());
-        crop.merge(cropUpdateCommand);
+    public CropUpdatedEvent updateCrop(UpdateCropCommand updateCropCommand) {
+        Crop crop = cropRepository.find(updateCropCommand.getId());
+        crop.merge(updateCropCommand);
         cropRepository.update(crop);
         CropUpdatedEvent cropUpdatedEvent = CropUpdatedEvent.create(crop);
         eventPublisher.publishEvent(cropUpdatedEvent);

@@ -8,8 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class CropUpdateCommand {
-    private String id;
+public class CreationCropCommand {
     private String name;
     private String weight;
 }
